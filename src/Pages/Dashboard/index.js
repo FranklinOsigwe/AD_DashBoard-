@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Card, Space, Statistic } from "antd";
+import { Typography, Card, Space, Statistic, Table } from "antd";
 import {
   ShoppingCartOutlined,
   UserOutlined,
@@ -41,5 +41,26 @@ function DashboardCard({ title, value }) {
     </div>
   );
 }
+
+const RecentOrders = () => {
+  return (
+    <Table
+      columns={[
+        {
+          title: "title",
+          dataIndex: "title",
+        },
+        {
+          title: "Quantity",
+          dataIndex: "quantity",
+        },
+        {
+          title: "Price",
+          dataIndex: "discountedPrice",
+        },
+      ]}
+    ></Table>
+  );
+};
 
 export default Dashboard;
