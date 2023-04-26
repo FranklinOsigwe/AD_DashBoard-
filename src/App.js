@@ -12,7 +12,6 @@ function App() {
       <Space>
         <SideMenu></SideMenu>
         <PageContent></PageContent>
-       
       </Space>
       <AppFooter />
     </div>

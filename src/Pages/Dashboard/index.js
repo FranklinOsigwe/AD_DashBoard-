@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Typography, Card, Space, Statistic, Table } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons";
-import { getOrders, getRevenue } from "../../api";
-import {
-  Chart as ChartJS,
-  CategoryScale,
+import { getCustomers, getInventory, getOrders, getRevenue } from "../../api";
+import { Chart as ChartJS, CategoryScale,
   LinearScale,
   BarElement,
   Title,
@@ -23,6 +20,27 @@ ChartJS.register(
 );
 
 function Dashboard() {
+  const [orders, setOrders] = useState(0);
+  const [inventory, setInventory] = useState(0);
+  const [customers, setCustomers] = useState(0);
+  const [revenue, setRevenue] = useState(0);
+
+  useEffect(() => {
+    getOrders().then((res) => {
+      setOrders(res.total);
+    });
+    getRevenue().then((res) => {
+      setRevenue(res.total);
+    });
+    getCustomers().then((res) => {
+      setCustomers(res.total);
+    });
+
+    getInventory().then((res) => {
+      setInventory(res.total);
+    });
+  }, []);
+
   return (
     <div>
       <Space size={20} direction="vertical">
@@ -30,15 +48,10 @@ function Dashboard() {
         <Space direction="horizontal">
           <Card>
             <Space direction="horizontal">
-              <DashboardCard
-                icon={<ShoppingCartOutlined />}
-                title={"Orders"}
-                value={1234}
-              />
-              <DashboardCard title={"Orders"} value={1234} />
-              <DashboardCard title={"Customer"} value={1234} />
-              <DashboardCard title={"Inventory"} value={1234} />
-              <DashboardCard title={"Revenue"} value={1234} />
+              <DashboardCard title={"Orders"} value={orders} />
+              <DashboardCard title={"Customer"} value={customers} />
+              <DashboardCard title={"Inventory"} value={inventory} />
+              <DashboardCard title={"Revenue"} value={revenue} />
             </Space>
           </Card>
         </Space>
@@ -144,15 +157,15 @@ function DashboardChart() {
     </Card>
   );
 
-  const labels = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-  ];
+  // const labels = [
+  //   "January",
+  //   "February",
+  //   "March",
+  //   "April",
+  //   "May",
+  //   "June",
+  //   "July",
+  // ];
 }
 
 export default Dashboard;
