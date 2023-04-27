@@ -9,10 +9,10 @@ function App() {
   return (
     <div className="App">
       <AppHeader />
-      <Space>
+      <div className="SideMenuAndPageCOntent ">
         <SideMenu></SideMenu>
         <PageContent></PageContent>
-      </Space>
+      </div>
       <AppFooter />
     </div>
   );

@@ -16,6 +16,7 @@ function SideMenu() {
   return (
     <div className="SideMenu">
       <Menu
+        className='sideMenuVertical' mode="vertical"
         onClick={(item) => {
           navigate(item.key);
         }}
