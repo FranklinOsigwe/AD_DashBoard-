@@ -30,11 +30,11 @@ function Customers() {
           },
           {
             title: "First Name",
-            dataIndex: "firstname",
+            dataIndex: "firstName",
           },
           {
             title: "Last Name",
-            dataIndex: "lastname",
+            dataIndex: "lastName",
           },
           {
             title: "Email",

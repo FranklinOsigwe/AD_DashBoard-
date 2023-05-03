@@ -56,8 +56,12 @@ function AppHeader() {
         }}
         maskClosable
       >
-        {/* <List dataSource={}></List> */}
+        <List
+          dataSource={comments}
+          renderItem={(item) => <List.Item>{item.body}</List.Item>}
+        ></List>
       </Drawer>
+
       <Drawer
         title="Notifications"
         open={notificationOpen}
@@ -65,7 +69,16 @@ function AppHeader() {
           setNotificationOpen(false);
         }}
         maskClosable
-      ></Drawer>
+      >
+        <List
+          dataSource={orders}
+          renderItem={(item) => (
+            <List.Item>
+              <Typography.Text strong>{item.title}</Typography.Text> has been ordered!
+            </List.Item>
+          )}
+        ></List>
+      </Drawer>
     </div>
   );
 }
